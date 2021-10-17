@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./fonts/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./img/favicon-32x32.PNG"">
+    <title>Panda</title>
+</head>
+<body>
+    <div id="container">
+        <p>Enter a PIN Code to continue  ^^</p>
+        <input type="password" id="pass" placeholder="PIN">
+        <div class="intro">
+            <h1>Hi Panda !!! Maybe today is a special day</h1>
+            <h2>I have a tiny gift for you ^ ^ I hope you like it</h2>
+            <button class="btn" onclick="showInterface()">
+                <h1 class="btn-content">Click me to continue</h1>
+            </button>
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal__body">
+            <div class="modal__close">
+                <i class="fas fa-times close-icon"></i>
+            </div>
+            <h1>Error!!! Your PIN is not exact. Please try again ^^</h1>
+        </div>
+    </div>
+    <script>
+        const main = document.getElementById("container");
+        const pass = document.getElementById("pass");
+        const intro = document.querySelector("#container .intro");
+        const modal = document.querySelector('.modal');
+        const modalBody = document.querySelector('.modal__body');
+        const close = document.querySelector('.modal__close');
+        pass.onkeydown = (event) => {
+            if (event.which == 13) {
+                var passInput = document.getElementById('pass').value;
+                if (passInput == 18102003) {
+                    main.removeChild(document.querySelector("#pass"));
+                    main.removeChild(document.querySelector("#container p"));
+                    intro.setAttribute("style", "display: block");
+                }   
+                else {
+                    modal.style.display = "flex";
+                    modal.addEventListener('click', function() {
+                        modal.style.display = "none";
+                    })
+                    close.addEventListener('click', function() {
+                        modal.style.display = "none";
+                    })
+                    modalBody.addEventListener('click', function(event) {
+                        event.stopPropagation();
+                    })
+                }                
+            }
+        }
+        function showInterface() {
+            window.open("mainInterface.html");
+            window.close(this);
+        }
+        
+    </script>
+</body>
+</html>

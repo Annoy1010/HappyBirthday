@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="musicAnimation.css">
+    <link rel="stylesheet" href="./fonts/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./img/favicon-32x32.PNG"">
+    <title>Panda</title>
+</head>
+<body>
+    <div id="main">
+        <div id="container">
+            <h2 class="heading">HAPPY BIRTHDAY <br> DZII</h2>
+            <div class="circle">
+            </div>
+            <img src="./img/Body.PNG" alt="" class="body-img">
+            <div class="music">
+                <audio id="player" src="./music/GuiNganLoiYeu.mp3"></audio>
+                <div class="player">
+                    <div class="control">
+                        <i class="fas fa-play" id="playbtn"></i>
+                    </div>
+                    <div class="info">
+                        <h1>A chill song for new day ^^</h1>
+                        <div class="bar">
+                            <div id="progress"></div>
+                        </div>
+                    </div>
+
+                    <div id="current">
+                        <h1>0:00</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var player = document.getElementById("player");
+        let progress = document.getElementById("progress");
+        let playbtn = document.getElementById("playbtn");
+
+        var playpause = function () {
+        if (player.paused) {
+            player.play();
+        } else {
+            player.pause();
+        }
+        }
+
+        playbtn.addEventListener("click", playpause);
+
+        player.onplay = function () {
+        playbtn.classList.remove("fa-play");
+        playbtn.classList.add("fa-pause");
+        }
+
+        player.onpause = function () {
+        playbtn.classList.add("fa-play");
+        playbtn.classList.remove("fa-pause");
+        }
+
+        player.ontimeupdate = function () {
+        let ct = player.currentTime;
+        current.innerHTML = timeFormat(ct);
+        //progress
+        let duration = player.duration;
+        prog = Math.floor((ct * 100) / duration);
+        progress.style.setProperty("--progress", prog + "%");
+        }
+
+        function timeFormat(ct) {
+        minutes = Math.floor(ct / 60);
+        seconds = Math.floor(ct % 60);
+
+        if (seconds < 10) {
+            seconds = "0"+seconds;
+        }
+
+        return minutes + ":" + seconds;
+        }
+    </script>
+</body>
+</html>

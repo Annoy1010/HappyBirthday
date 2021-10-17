@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mainInterface.css">
+    <link rel="stylesheet" href="./fonts/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./img/favicon-32x32.PNG"">
+    <title>Panda</title>
+</head>
+<body>
+    <div id="main">
+        <div id="container">
+            <div class="item1">
+                <h1>GATE 1</h1>
+            </div>
+            <div class="item2">
+                <h1>GATE 2</h1>
+            </div>
+            <div class="item3">
+                <h1>GATE 3</h1>
+            </div>
+        </div>
+        <button class="continue" onclick="SkipPage()">
+            <h1>CONTINUE <i class="fas fa-forward skip-icon" ></i></h1>
+        </button>
+    </div>
+    <div class="modal">
+        <div class="modal__body-item1">
+            <div class="modal__close">
+                <i class="fas fa-times close-icon"></i>
+            </div>
+            <h1>I wish you full of happiness and love</h1>
+        </div>
+        <div class="modal__body-item2">
+            <div class="modal__close">
+                <i class="fas fa-times close-icon"></i>
+            </div>
+            <h1>Keep smile on your face</h1>
+        </div>
+        <div class="modal__body-item3">
+            <div class="modal__close">
+                <i class="fas fa-times close-icon"></i>
+            </div>
+            <h1>Your birthday is the first day of another 365-day journey</h1>
+        </div>
+    </div>
+    <script>
+        const item1Btn = document.querySelector('.item1');
+        const item2Btn = document.querySelector('.item2');
+        const item3Btn = document.querySelector('.item3');
+        const modal = document.querySelector('.modal');
+        const modalBodyItem1 = document.querySelector('.modal__body-item1');
+        const modalBodyItem2 = document.querySelector('.modal__body-item2');
+        const modalBodyItem3 = document.querySelector('.modal__body-item3');
+        // const continueBtn = document.querySelector('.continue');
+        const closes = document.querySelectorAll('.modal__close');
+        var clickItem1;
+        var clickItem2;
+        var clickItem3;
+        function CloseModal() {
+            modal.style.display = 'none';
+        }
+        item1Btn.addEventListener('click', function() {
+            modal.style.display = 'flex';
+            modalBodyItem2.style.display = 'none';
+            modalBodyItem3.style.display = 'none';
+            modalBodyItem1.style.display = 'block';
+            clickItem1 = true;
+        })
+        item2Btn.addEventListener('click', function() {
+            modal.style.display = 'flex';            
+            modalBodyItem1.style.display = 'none';
+            modalBodyItem3.style.display = 'none';
+            modalBodyItem2.style.display = 'block';
+            clickItem2 = true;
+        })        
+        item3Btn.addEventListener('click', function() {
+            modal.style.display = 'flex';
+            modalBodyItem2.style.display = 'none';
+            modalBodyItem1.style.display = 'none';
+            modalBodyItem3.style.display = 'block';
+            clickItem3 = true;
+        })
+        modal.addEventListener('click', CloseModal);
+        for(var close of closes) {
+            close.addEventListener('click', CloseModal);
+        }
+        modalBodyItem1.addEventListener('click', function(e) {
+            e.stopPropagation();
+        })
+        modalBodyItem2.addEventListener('click', function(e) {
+            e.stopPropagation();
+        })
+        modalBodyItem3.addEventListener('click', function(e) {
+            e.stopPropagation();
+        })
+        function SkipPage() {
+            if (clickItem1 && clickItem2 && clickItem3) 
+            {
+                window.open("musicAnimation.html");
+                window.close(this);
+            }
+        }
+    </script>
+</body>
+</html>

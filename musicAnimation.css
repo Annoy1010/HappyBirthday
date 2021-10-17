@@ -25,6 +25,7 @@ html {
     font-family: 'Permanent Marker', cursive;
     color: #fff;
     animation: TextMove 1.8s linear infinite;
+    margin-bottom: 32px;
 }
 
 .circle {
@@ -176,8 +177,13 @@ html {
     }
 
     .circle {
-        width: 300px;
-        height: 300px;
+        width: 280px;
+        height: 280px;
+        margin-top: 70%;
+    }
+
+    .body-img {
+        margin-top: 70%;
     }
 
     .info h1 {
@@ -193,8 +199,8 @@ html {
     }
 
     .body-img {
-        width: 300px;
-        height: 300px;    
+        width: 280px;
+        height: 280px;    
     }
 
     .music {
@@ -205,7 +211,7 @@ html {
         right: 0;
         text-align: center;
         margin: auto;
-        width: 70%;
+        width: 90%;
     }
 
     .player {
@@ -213,8 +219,8 @@ html {
     }
 
     .circle {
-        width: 300px;
-        height: 300px;
+        width: 280px;
+        height: 280px;
     }
     .info h1 {
         font-size: 20px;
